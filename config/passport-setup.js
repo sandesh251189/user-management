@@ -1,6 +1,7 @@
-var passport = require("passport");
-var GoogleStrategy = require("passport-google-oauth20");
-var keys = require("./keys")
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth20");
+const keys = require("./keys");
+const User = require('../models/user-models');
 passport.use(
   new GoogleStrategy({
     clientID: keys.google.clientID,
@@ -9,5 +10,11 @@ passport.use(
   }, (accessToken, refreshToken, profile, done) => {
     console.log("Passport callback");
        console.log(profile);
+       new User({
+           googleId: profile.id,
+           username: profile.displayName
+       }).save().then((newUser) => {
+           console.log('new user created: ', newUser);
+       });
   })
 );

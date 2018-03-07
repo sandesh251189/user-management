@@ -1,11 +1,19 @@
-var express=require("express");
-var authRoutes=require("./routes/aouth-routes");
+const express=require("express");
+const mongoose = require('mongoose');
+const authRoutes=require("./routes/aouth-routes");
 const passportSetup = require('./config/passport-setup');
-var app=express();
+const keys = require("./config/keys")
+const app=express();
 
 //Set View engine
 app.set('view engine','ejs')
 // set up routes
+
+//mongo connect
+mongoose.connect(keys.mongodb.dbURI,()=>{
+  console.log("mongo has been connect")
+})
+
 
 app.use('/auth', authRoutes);
 
