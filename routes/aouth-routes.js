@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const passport=require("passport");
 router.get('/login', (req, res) => {
-  res.render('login')
+  res.render('login',{user:req.user})
 })
 
 router.get('/ragister', (req, res) => {
@@ -12,7 +12,7 @@ router.get('/ragister', (req, res) => {
 router.get('/logout', (req, res) => {
 //  res.send("This is Logout Route");
 req.logout();
-res.render('home')
+res.render('home',{user:req.user})
 })
 
 

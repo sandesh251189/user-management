@@ -30,7 +30,7 @@ app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
 //Seting route for index
 app.get('/', (req, res) => {
-  res.render('home')
+  res.render('home',{user:req.user})
 })
 
 
