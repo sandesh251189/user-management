@@ -7,4 +7,7 @@ module.exports={
     dbURI:'mongodb://localhost/myapp_db'
 
   },
+  session:{
+    cookeiKey:'Hithisisisddharth'
+  }
 }
