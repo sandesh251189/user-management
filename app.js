@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const authRoutes = require("./routes/aouth-routes");
+const profileRoutes = require("./routes/profile-routes");
 const passportSetup = require('./config/passport-setup');
 const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
@@ -26,7 +27,7 @@ mongoose.connect(keys.mongodb.dbURI, () => {
 
 
 app.use('/auth', authRoutes);
-
+app.use('/profile', profileRoutes);
 //Seting route for index
 app.get('/', (req, res) => {
   res.render('home')

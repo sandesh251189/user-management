@@ -10,7 +10,9 @@ router.get('/ragister', (req, res) => {
 
 
 router.get('/logout', (req, res) => {
-  res.send("This is Logout Route")
+//  res.send("This is Logout Route");
+req.logout();
+res.render('home')
 })
 
 
@@ -19,6 +21,7 @@ router.get('/google',passport.authenticate('google',{
 }) )
 
 router.get('/google/redirect',passport.authenticate('google'), (req, res) => {
-  res.send("You have reached at calback URI")
+  //res.send("You are loged in with user : " + req.user.username);
+  res.redirect('/profile/')
 })
 module.exports = router;

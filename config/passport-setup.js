@@ -4,6 +4,7 @@ const keys = require("./keys");
 const User = require('../models/user-models');
 passport.serializeUser((user,done)=>{
   done(null,user.id);
+  //console.log("User Id" + user.id + " Googlr Id" + user.googleId)
 });
 passport.deserializeUser((id,done)=>{
   User.findById(id).then((user)=>{
